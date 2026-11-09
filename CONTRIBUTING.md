@@ -93,11 +93,18 @@ The project uses a TypeScript-based development environment.
 
 Expected tooling includes:
 
-- Node.js (supported LTS version).
+- Node.js 24 or later (see the Node.js version policy below).
 - pnpm.
 - Git.
 - TypeScript.
 - Docker where required by the development environment.
+
+### Node.js Version Policy
+
+- Minimum supported version: Node.js 24.
+- Primary development and CI version: Node.js 26.
+- CI will test against both Node.js 24 and Node.js 26.
+- The development version will be pinned in the repository when the project tooling is set up.
 
 Clone the repository:
 

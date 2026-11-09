@@ -4,10 +4,10 @@
 
 **An open-source platform for website security, SEO, performance optimization, and continuous monitoring.**
 
-[![Status](https://img.shields.io/badge/status-in%20development-orange)]()
-[![License](https://img.shields.io/badge/license-Apache%202.0-blue.svg)]()
-[![TypeScript](https://img.shields.io/badge/TypeScript-Ready-blue?logo=typescript)]()
-[![Open Source](https://img.shields.io/badge/Open%20Source-Yes-brightgreen)]()
+[![Status](https://img.shields.io/badge/status-in%20development-orange)](ROADMAP.md)
+[![License](https://img.shields.io/badge/license-Apache%202.0-blue.svg)](LICENSE)
+[![TypeScript](https://img.shields.io/badge/TypeScript-Ready-blue?logo=typescript)](https://www.typescriptlang.org/)
+[![Open Source](https://img.shields.io/badge/Open%20Source-Yes-brightgreen)](https://github.com/abdullahecomemail-netizen/backend-design)
 
 ---
 
@@ -15,7 +15,7 @@
 
 Backend Design is an open-source website engineering platform designed to help developers and website owners build, secure, optimize, and monitor their websites from one ecosystem.
 
-It combines reusable developer tools with a centralized website management dashboard.
+It provides reusable developer packages and a documented, versioned API for running audits and monitoring websites.
 
 Instead of relying on disconnected tools for SEO, security, and performance, Backend Design aims to bring these capabilities together.
 
@@ -90,18 +90,13 @@ A unified auditing system combining:
 - Detailed findings and recommendations.
 - Historical scan comparisons.
 
-### 5. Management Dashboard
+### Separate Management Dashboard
 
-A centralized interface for managing multiple websites.
+The management dashboard is not part of this repository and is not a core feature of the engine.
 
-- Website management.
-- SEO reports.
-- Security reports.
-- Performance analytics.
-- Scan history.
-- Monitoring schedules.
-- Notifications and alerts.
-- API integrations.
+It is planned as a separate repository, `backend-design-dashboard`. It will communicate with the core engine only through documented, versioned APIs.
+
+Core security protections must never depend on dashboard availability. See Phase 8 in [ROADMAP.md](ROADMAP.md).
 
 ## Architecture
 
@@ -111,7 +106,6 @@ Backend Design is designed as a modular monorepo.
 backend-design/
 │
 ├── apps/
-│   ├── dashboard/
 │   ├── api/
 │   ├── worker/
 │   └── docs/
@@ -135,23 +129,25 @@ backend-design/
 └── .github/
 ```
 
+The dashboard is intentionally excluded from this repository. It will live in the separate `backend-design-dashboard` repository.
+
 ### Two ways to use Backend Design
 
 **Developer Engine**
 
 Install reusable packages and integrate SEO, security, and performance functionality directly into your applications.
 
-**Management Platform**
+**API and Monitoring Platform**
 
-Use the dashboard to connect websites, run audits, monitor results, and manage website health.
+Use the versioned REST API, background workers, and scheduled monitoring to run audits and track website health. The separate dashboard will use this same API.
 
 ## Technology Stack
 
 | Technology | Purpose |
 |---|---|
 | TypeScript | Core development |
-| Node.js | Backend runtime |
-| Next.js | Dashboard |
+| Node.js | Backend runtime (minimum version 24) |
+| Next.js | Next.js integration package |
 | Fastify | API |
 | PostgreSQL | Database |
 | Prisma | Database ORM |
@@ -193,7 +189,7 @@ The following is the planned development roadmap.
 - [ ] REST API.
 - [ ] Database and authentication.
 - [ ] Background job processing.
-- [ ] Website management dashboard.
+- [ ] Dashboard integration through documented, versioned APIs (separate repository).
 - [ ] Historical reports and monitoring.
 - [ ] Docker self-hosting.
 - [ ] Cloud deployment architecture.
@@ -215,7 +211,7 @@ Before contributing:
 4. Write tests for new functionality.
 5. Submit a pull request with a clear explanation.
 
-Contribution documentation will be added as the repository develops.
+See [CONTRIBUTING.md](CONTRIBUTING.md) for the full contribution guidelines.
 
 ## Security
 
@@ -227,7 +223,7 @@ No software can guarantee complete protection. Backend Design aims to provide pr
 
 ## License
 
-Backend Design is intended to be released under the **Apache License 2.0**.
+Backend Design is licensed under the **Apache License 2.0**.
 
 See the `LICENSE` file for the complete terms.
 

@@ -317,4 +317,4 @@ Please allow maintainers reasonable time to investigate and coordinate a fix bef
 
 BACKEND DESIGN is currently under active development.
 
-Supported versions and security maintenance periods will be published as stable releases become
+Supported versions and their security maintenance periods will be documented when stable releases become available.
