@@ -53,6 +53,12 @@ We prioritize stable foundations before adding complex functionality.
 
 **Goal:** Build a reusable SEO toolkit for modern websites.
 
+### Network Safety (first task of this phase)
+
+- [ ] SSRF protection (net-guard): guarded outbound HTTP for all audit modules.
+
+Network-using SEO modules, such as broken link detection, redirect chain analysis, HTTP status analysis and crawlability checks, cannot be implemented before net-guard is implemented, tested and reviewed. See [ADR 0001](docs/adr/0001-network-egress-guard.md).
+
 ### On-Page SEO
 
 - [ ] Dynamic metadata generation.
@@ -139,7 +145,8 @@ Security is our highest engineering priority.
 - [ ] Common misconfiguration detection.
 - [ ] Security findings and remediation reports.
 - [ ] Safe scanning restrictions.
-- [ ] SSRF protection.
+
+SSRF protection moved to the start of Phase 2 (see [ADR 0001](docs/adr/0001-network-egress-guard.md)). The scanner uses that guarded network layer.
 
 ### Continuous Security
 

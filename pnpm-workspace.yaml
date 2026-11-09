@@ -1,0 +1,40 @@
+packages:
+  - packages/*
+
+# Single source of truth for versions shared across workspace packages.
+catalog:
+  '@types/node': 24.19.2
+  typescript: 6.0.3
+  vitest: 4.1.12
+  zod: 4.6.7
+
+# Supply-chain hardening: refuse versions published less than 7 days ago.
+minimumReleaseAge: 10080
+engineStrict: true
+
+auditConfig:
+  ignoreGhsas:
+    # TEMPORARY, REVIEWABLE DEVELOPMENT-DEPENDENCY EXCEPTION.
+    #
+    # GHSA-g3hv-75wg-m249 / CVE-2026-118764 (medium, CWE-405): attacker-controlled glob
+    # patterns can amplify minimatch preprocessing and cause excessive CPU and memory use.
+    # Affected: minimatch >=7.0.0 <11.0.1. Installed: 10.2.6. Patched: 11.0.1.
+    # This is a real vulnerability. The exception covers only this repository's current use.
+    #
+    # Dependency paths (both dev-only, transitive):
+    #   - eslint@10.14.0 -> minimatch ^10.2.6
+    #   - @typescript-eslint/typescript-estree@8.72.1 -> minimatch ^10.2.2
+    #
+    # Why the vulnerable path is not enabled here, based on the call sites audited on
+    # 2026-11-09: it runs only when optimizationLevel >= 2. Neither consumer sets
+    # optimizationLevel, so both use the default level 1.
+    #
+    # Why no forced minimatch 11 override: both consumers declare a ^10 range. Overriding
+    # them with a new major version could silently change ESLint's file and ignore matching.
+    #
+    # Review and remove this exception when any of these happens:
+    #   - Either consumer adopts minimatch 11 or another compatible patched version.
+    #   - Either consumer changes its minimatch dependency range.
+    #   - A consumer starts using optimizationLevel >= 2.
+    #   - minimatch becomes a dependency of a production package.
+    - GHSA-g3hv-75wg-m249

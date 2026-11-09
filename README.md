@@ -102,6 +102,8 @@ Core security protections must never depend on dashboard availability. See Phase
 
 Backend Design is designed as a modular monorepo.
 
+**Current implementation status:** Phase 1 (Core Foundation) is in progress. Only `packages/shared-types` and `packages/core` exist today. Every other directory below is planned and not yet implemented. See [docs/architecture.md](docs/architecture.md) for what exists and [docs/development.md](docs/development.md) to install, test and build.
+
 ```text
 backend-design/
 │

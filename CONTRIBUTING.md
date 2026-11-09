@@ -104,7 +104,7 @@ Expected tooling includes:
 - Minimum supported version: Node.js 24.
 - Primary development and CI version: Node.js 26.
 - CI will test against both Node.js 24 and Node.js 26.
-- The development version will be pinned in the repository when the project tooling is set up.
+- The development version is pinned in `.node-version`. The pnpm version is pinned in the `packageManager` field of `package.json`.
 
 Clone the repository:
 
@@ -114,13 +114,13 @@ git clone https://github.com/YOUR_USERNAME/backend-design.git
 cd backend-design
 ```
 
-Install dependencies after the project package configuration has been established:
+Install dependencies:
 
 ```bash
 pnpm install
 ```
 
-Run the available development scripts documented in the relevant package.
+See [docs/development.md](docs/development.md) for installing pnpm, the available scripts, and how to run all checks.
 
 Note: Commands may change during early development. Follow the current README and package documentation.
 
